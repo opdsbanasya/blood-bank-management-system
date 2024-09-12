@@ -1,0 +1,30 @@
+{
+  "name": "dbms",
+  "version": "1.0.0",
+  "description": "It is a Blood Bank Management System",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/opdsbanasya/blood-bank-management-system.git"
+  },
+  "author": "Dharm Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/opdsbanasya/blood-bank-management-system/issues"
+  },
+  "homepage": "https://github.com/opdsbanasya/blood-bank-management-system#readme",
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "postcss": "^8.4.45",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.4.11"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
