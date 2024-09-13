@@ -11,7 +11,7 @@ const Navbar = () => {
                 </ul>
                 <div className="flex items-center gap-10">
                     <div className="space-x-2">
-                        <input className="px-2 py-1 outline-none rounded-lg" type="text" placeholder="Search" />
+                        <input className="px-2 py-1 text-black outline-none rounded-lg" type="text" placeholder="Enter to search" />
                         <button className="px-2 py-1 bg-white text-black rounded-lg">Search</button>
                     </div>
                     <div>
