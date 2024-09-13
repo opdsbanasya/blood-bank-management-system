@@ -17,7 +17,7 @@ react-router-dom
                     - donor
                     - patient
         - slider ✅
-        - awailable bloods 
+        - awailable bloods ✅
         - past camps
         - feature
         - footer
