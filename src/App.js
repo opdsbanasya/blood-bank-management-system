@@ -1,9 +1,11 @@
-import React from "react"
+import React from "react";
 import ReactDOM from "react-dom/client";
-import Navbar from "./Components/Navbar"
+
+import Home from "./Components/Home";
+
 const App = () => {
     return (
-        <Navbar />
+        <Home />
     )
 }
 

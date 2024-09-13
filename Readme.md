@@ -6,14 +6,14 @@ react-router-dom
 # Layout of the project
 - components
     - home
-        - header
-            - logo
-            - navbar
-                - blood donation camp
-                - about us
-                - contact us
-                - search
-                - login
+        - header 
+            - logo ✅
+            - navbar 
+                - blood donation camp ✅
+                - about us ✅
+                - contact us ✅
+                - search ✅
+                - login 
                     - donor
                     - patient
         - slider
