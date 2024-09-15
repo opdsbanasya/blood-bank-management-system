@@ -1,4 +1,5 @@
 import {useState} from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
 
@@ -6,12 +7,12 @@ const Navbar = () => {
 
     return (
         <header className="w-full h-[12vh] bg-red-600 flex items-center justify-start gap-12 px-10 text-white">
-            <h1 className="w-[10%] text-2xl font-semibold">e-Blood</h1>
+            <Link to="/" className="w-[10%] text-2xl font-semibold cursor-pointer">e-Blood</Link>
             <nav className="h-full w-10/12 flex items-center justify-between">
                 <ul className=" h-full flex items-center justify-start gap-10">
                     <li className="text-lg">Donation Camp</li>
-                    <li className="text-lg">About us</li>
-                    <li className="text-lg">Contact us</li>
+                    <Link to="/about" className="text-lg">About us</Link>
+                    <Link to="/contact" className="text-lg">Contact us</Link>
                 </ul>
                 <div className="flex items-center gap-10">
                     <div className="space-x-2">
