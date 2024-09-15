@@ -16,7 +16,8 @@ export const SERVICES_DATA = [
 ]
 
 export const REVIEW_DATA = [
-    {id:1, Awards:"5", img:"icon"},
-    {id:2, donors:"500+", img:"icon"},
-    {id:3, recipient:"400+", img:"icon"},
+    {id:1, name:"Awards", number:"5", img:"https://innovativeartisan.com/demo/html/blad-ai/assets/images/icon/c3.png"},
+    {id:2, name:"Happy Donors", number:"500+", img:"https://innovativeartisan.com/demo/html/blad-ai/assets/images/icon/c2.png"},
+    {id:3, name:"Happy Recipient", number:"400+", img:"https://innovativeartisan.com/demo/html/blad-ai/assets/images/icon/c4.png"}
 ]
+const j = "https://innovativeartisan.com/demo/html/blad-ai/assets/images/count.jpg"; 

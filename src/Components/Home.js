@@ -1,6 +1,8 @@
 import Slider from "./Slider";
 import AwailableBlood from "./AwailableBlood";
 import Services from "./Services";
+import StripDonor from "./StripDonor";
+import Footer from "./Footer";
 
 const Home = () => {
     return (
@@ -8,6 +10,8 @@ const Home = () => {
             <Slider />
             <AwailableBlood />
             <Services />
+            <StripDonor />
+            <Footer />
         </>
     );
 }
