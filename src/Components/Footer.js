@@ -9,7 +9,7 @@ const Footer = () => {
                 <h1 className="text-2xl  font-semibold">e-Blood</h1>
                 <p className="">22, Jai Tower <br /> Jagatpura, Jaipur <br /> Rajasthan - 302017</p>
             </div>
-            <div> 
+            <div>
                 <img className="h-[40vh]" src="https://img.icons8.com/?size=1600&id=115622&format=png&color=000000" />
             </div>
             <div>
