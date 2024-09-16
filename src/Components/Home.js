@@ -11,7 +11,6 @@ const Home = () => {
             <AwailableBlood />
             <Services />
             <StripDonor />
-            <Footer />
         </>
     );
 }

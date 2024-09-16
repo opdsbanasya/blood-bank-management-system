@@ -13,33 +13,34 @@ react-router-dom
                 - about us ✅
                 - contact us ✅
                 - search ✅
-                - login
-                    - donor
-                    - patient
-        - slider ✅
+                - login ✅
+                    - donor ✅
+                    - patient ✅
+        - banner ✅
         - awailable bloods ✅
-        - past camps
-        - Sevices
+        - Reviews ✅
+        - Sevices ✅
             - Blood donation
             - Blood request
             - Blood bank
-        - footer
+        - footer ✅
             - address
             - contact
             - links
-    - blood donation camp
+    - Services
         - login/regiter
             - donor
             - patient
             - after log/reg
-                - donor
-                    - donor details
-                    - donate blood
-                    - my donation
-                - patient
-                    - patient details
-                    - request blood
-                    - my request
+                - blood bank
+                    - blood bank details
+                    - blood bank list
+                - request blood
+                    - request blood form
+                    - request blood list
+                - donate blood
+                    - donate blood form
+                    - donate blood list
     - about us
         - photos
         - description

@@ -5,6 +5,7 @@ import Home from "./Components/Home";
 import Header from "./Components/Header";
 import AboutUs from "./Components/AboutUs";
 import ContactUs from "./Components/ContactUs";
+import Footer from "./Components/Footer";
 
 const App = () => {
 
@@ -14,6 +15,7 @@ const App = () => {
         <>
             <Header />
             <Outlet />
+            <Footer />
         </>
     )
 }
