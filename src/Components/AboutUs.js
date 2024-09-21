@@ -1,9 +1,9 @@
 
 const AboutUs = () => {
     return (
-        <div>
-            <h1>About Us</h1>
-        </div>
+        <section className="w-full min-h-screen">
+            <h1 className="text-2xl font-bold">About Us</h1>
+        </section>
     );
 }
 

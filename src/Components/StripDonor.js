@@ -2,10 +2,7 @@ import { useEffect, useState } from "react";
 import { REVIEW_DATA } from "../mocks/constantData";
 
 
-
 const StripDonor = () => {
-
-
     return (
         <section className="w-full px-32 py-10 flex items-center justify-between bg-zinc-200">
             {REVIEW_DATA.map(review => {
