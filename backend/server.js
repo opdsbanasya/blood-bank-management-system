@@ -26,8 +26,8 @@ connection.connect((err) => {
 });
 
 // Sample route
-app.get('/', (req, res) => {
-    res.send('Blood Management System API');
+app.get('/api/test', (req, res) => {
+    res.json({ message: 'Blood Management System API is working' });
 });
 
 // Start server
