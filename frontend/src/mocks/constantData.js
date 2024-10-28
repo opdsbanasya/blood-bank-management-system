@@ -10,9 +10,9 @@ export const BLOOD_GROUP_DATA = [
 ]
 
 export const SERVICES_DATA = [
-    {id:1, name: "Blood Donation", img:"http://innovativeartisan.com/demo/html/blad-ai/assets/images/s1.jpg", description:"Blood is red.Blood is red.Blood is red.Blood is red.", reverse:false},
-    {id:2, name: "Blood Bank", img:"http://innovativeartisan.com/demo/html/blad-ai/assets/images/s3.jpg", description:"Blood is red.Blood is red.Blood is red.Blood is red.", reverse:true},
-    {id:3, name: "Blood Request", img:"https://innovativeartisan.com/demo/html/blad-ai/assets/images/n2.jpg", description:"Blood is red.Blood is red.Blood is red.Blood is red.", reverse:false}
+    {id:1, name: "Blood Donation", img:"http://innovativeartisan.com/demo/html/blad-ai/assets/images/s1.jpg", description:"Facilitates a seamless donor registration process, allowing individuals to contribute blood and support those in need.", reverse:false},
+    {id:2, name: "Blood Bank", img:"http://innovativeartisan.com/demo/html/blad-ai/assets/images/s3.jpg", description:" Maintains real-time inventory and availability of blood types, supporting healthcare providers in managing blood resources effectively.", reverse:true},
+    {id:3, name: "Blood Request", img:"https://innovativeartisan.com/demo/html/blad-ai/assets/images/n2.jpg", description:"Enables users to request specific blood types efficiently, ensuring timely access to life-saving resources.", reverse:false}
 ]
 
 export const REVIEW_DATA = [
