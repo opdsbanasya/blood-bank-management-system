@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -20,13 +20,12 @@ const Navbar = () => {
                         <button className="px-4 py-2 bg-white text-black rounded-lg font-[300] text-sm">Search</button>
                     </div>
                     <div>
-                        <h4 className="text-lg relative cursor-pointer" 
-                        onClick={()=> setShowLogin(!showLogin)}
-                        >{showLogin ? "Close" : "sign in"}</h4>
-                        <div className={`mt-4 absolute z-10 flex flex-col bg-white text-black overflow-hidden rounded-md shadow-lg ${showLogin === true ? "block" : "hidden"} `}>
-                            <Link to="/donorlogin" className="hover:bg-zinc-100 px-4 py-2 cursor-pointer">Donor</Link>
-                            <Link to="/patientlogin" className="hover:bg-zinc-100 px-4 py-2 cursor-pointer">Patient</Link>
-                        </div>
+                        <Link
+                            to="/donorlogin"
+                            className="text-lg relative cursor-pointer"
+                            onClick={() => setShowLogin(!showLogin)}
+                        >{/*showLogin ? "" : "sign in"*/} Sign in</Link>
+
                     </div>
                 </div>
             </nav>
