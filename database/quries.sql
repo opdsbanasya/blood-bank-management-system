@@ -33,7 +33,7 @@ CREATE TABLE blood_request (
   blood_group CHAR(3) NOT NULL,
   requested_units INT NOT NULL,
   request_reason TEXT NOT NULL,
-  request_status ENUM('Pending', 'Approved', 'Denied') DEFAULT 'Pending',
+  --request_status ENUM('Pending', 'Approved', 'Denied') DEFAULT 'Pending',
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { handleChange, handleSubmit } from '../mocks/validateBloodRequest';
 
 function BloodRequestForm() {
-
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
@@ -15,22 +15,11 @@ function BloodRequestForm() {
         request_status: 'Pending',
     });
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
-    };
+    const [errors, setErrors] = useState({});
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('Form submitted:', formData);
-        // Add form submission logic here
-    };
     const handleBack = () => {
         navigate(-1);
-    }
+    };
 
     return (
         <div className="flex justify-center items-center min-h-screen py-10 bg-gray-100 relative">
@@ -42,11 +31,12 @@ function BloodRequestForm() {
                 &lt; Back
             </button>
             <form
-                onSubmit={handleSubmit}
+                onSubmit={(e) => handleSubmit(e, formData, setFormData, setErrors)}
                 className="w-1/2 bg-white p-8 shadow-md rounded-md border border-red-600"
             >
                 <h2 className="text-2xl font-bold text-center mb-6 text-red-700">Blood Request Form</h2>
 
+                {/** Patient Name Field */}
                 <label className="block mb-4">
                     <span className="text-red-700">Patient Name</span>
                     <input
@@ -55,11 +45,13 @@ function BloodRequestForm() {
                         maxLength="50"
                         required
                         value={formData.patient_name}
-                        onChange={handleChange}
+                        onChange={(e) => handleChange(e, setFormData, setErrors)}
                         className="mt-1 block w-full px-3 py-2 border border-red-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-600"
                     />
+                    {errors.patient_name && <p className="text-red-600 text-sm">{errors.patient_name}</p>}
                 </label>
 
+                {/** Patient Email Field */}
                 <label className="block mb-4">
                     <span className="text-red-700">Patient Email</span>
                     <input
@@ -68,11 +60,13 @@ function BloodRequestForm() {
                         maxLength="50"
                         required
                         value={formData.patient_email}
-                        onChange={handleChange}
+                        onChange={(e) => handleChange(e, setFormData, setErrors)}
                         className="mt-1 block w-full px-3 py-2 border border-red-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-600"
                     />
+                    {errors.patient_email && <p className="text-red-600 text-sm">{errors.patient_email}</p>}
                 </label>
 
+                {/** Patient Phone Field */}
                 <label className="block mb-4">
                     <span className="text-red-700">Patient Phone</span>
                     <input
@@ -81,11 +75,13 @@ function BloodRequestForm() {
                         maxLength="20"
                         required
                         value={formData.patient_phone}
-                        onChange={handleChange}
+                        onChange={(e) => handleChange(e, setFormData, setErrors)}
                         className="mt-1 block w-full px-3 py-2 border border-red-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-600"
                     />
+                    {errors.patient_phone && <p className="text-red-600 text-sm">{errors.patient_phone}</p>}
                 </label>
 
+                {/** Blood Group Field */}
                 <label className="block mb-4">
                     <span className="text-red-700">Blood Group</span>
                     <input
@@ -94,11 +90,13 @@ function BloodRequestForm() {
                         maxLength="3"
                         required
                         value={formData.blood_group}
-                        onChange={handleChange}
+                        onChange={(e) => handleChange(e, setFormData, setErrors)}
                         className="mt-1 block w-full px-3 py-2 border border-red-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-600"
                     />
+                    {errors.blood_group && <p className="text-red-600 text-sm">{errors.blood_group}</p>}
                 </label>
 
+                {/** Requested Units Field */}
                 <label className="block mb-4">
                     <span className="text-red-700">Requested Units</span>
                     <input
@@ -107,42 +105,34 @@ function BloodRequestForm() {
                         min="1"
                         required
                         value={formData.requested_units}
-                        onChange={handleChange}
+                        onChange={(e) => handleChange(e, setFormData, setErrors)}
                         className="mt-1 block w-full px-3 py-2 border border-red-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-600"
                     />
+                    {errors.requested_units && <p className="text-red-600 text-sm">{errors.requested_units}</p>}
                 </label>
 
+                {/** Request Reason Field */}
                 <label className="block mb-4">
                     <span className="text-red-700">Request Reason</span>
                     <textarea
                         name="request_reason"
                         required
                         value={formData.request_reason}
-                        onChange={handleChange}
+                        onChange={(e) => handleChange(e, setFormData, setErrors)}
                         className="mt-1 block w-full px-3 py-2 border border-red-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-600"
                     />
+                    {errors.request_reason && <p className="text-red-600 text-sm">{errors.request_reason}</p>}
                 </label>
 
-                <label className="mb-6 hidden">
-                    <span className="text-red-700">Request Status</span>
-                    <select
-                        name="request_status"
-                        value={formData.request_status}
-                        onChange={handleChange}
-                        className="mt-1 block w-full px-3 py-2 border border-red-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-600"
-                    >
-                        <option value="Pending">Pending</option>
-                        <option value="Approved">Approved</option>
-                        <option value="Denied">Denied</option>
-                    </select>
-                </label>
-
+                {/** Submit Button */}
                 <button
                     type="submit"
                     className="w-full bg-red-600 text-white py-2 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2"
                 >
                     Submit
                 </button>
+
+                {errors.submit && <p className="text-red-600 text-sm mt-4 text-center">{errors.submit}</p>}
             </form>
         </div>
     );

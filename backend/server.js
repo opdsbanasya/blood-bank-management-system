@@ -60,6 +60,22 @@ db.query(`
     else console.log('blood_donation table created successfully');
 });
 
+db.query(`
+    CREATE TABLE IF NOT EXISTS blood_request (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        patient_name VARCHAR(50) NOT NULL,
+        patient_email VARCHAR(50) NOT NULL,
+        patient_phone VARCHAR(20) NOT NULL,
+        blood_group CHAR(3) NOT NULL,
+        requested_units INT NOT NULL,
+        request_reason TEXT NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+  `, (err) => {
+    if (err) console.error('Error creating table:', err);
+    else console.log('blood_request table created successfully');
+});
+
 
 
 // API endpoint to handle form submission
@@ -94,6 +110,21 @@ app.post('/api/donate', (req, res) => {
             return;
         }
         res.status(201).json({ message: 'Donation information saved successfully' });
+    });
+});
+
+app.post('/api/request', (req, res) => {
+    const { patient_name, patient_email, patient_phone, blood_group, requested_units, request_reason } = req.body;
+
+    const query = `INSERT INTO blood_request (patient_name, patient_email, patient_phone, blood_group, requested_units, request_reason) VALUES (?, ?, ?, ?, ?, ?)`;
+
+    db.query(query, [patient_name, patient_email, patient_phone, blood_group, requested_units, request_reason], (err, result) => {
+        if (err) {
+            console.error('Database insert error:', err);
+            res.status(500).send('Error submitting blood request');
+        } else {
+            res.status(200).send('Blood request submitted successfully');
+        }
     });
 });
 
