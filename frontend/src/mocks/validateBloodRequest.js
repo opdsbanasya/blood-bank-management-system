@@ -1,4 +1,4 @@
-// validateBloodRequest.js
+
 const VALIDATORS = {
     patient_name: {
         pattern: /^[A-Za-z\s]{3,50}$/,

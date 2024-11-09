@@ -1,5 +1,3 @@
-// validateBloodBank.js
-
 // Function to validate the Blood Bank Form
 export const validateBloodBankForm = (formData, setErrors) => {
     const errors = {};

@@ -1,4 +1,3 @@
-// validate.js
 // Regular expressions for validation
 const VALIDATORS = {
     name: {
