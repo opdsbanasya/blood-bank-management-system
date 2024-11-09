@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Swal from 'sweetalert2';
+import { handleChange, handleSubmit } from '../mocks/validate'; // Import validation functions
 
 const ContactUs = () => {
     // State to store form data
@@ -10,64 +10,19 @@ const ContactUs = () => {
         message: ''
     });
 
+    // State to store error messages
+    const [errors, setErrors] = useState({});
+
     // Handle input changes
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
+    const onFieldChange = async (e) => {
+        await handleChange(e, setFormData, setErrors); // Validate as user types
     };
 
     // Handle form submission
-    const handleSubmit = async (event) => {
+    const onSubmit = async (event) => {
         event.preventDefault();
-        
-        try {
-            const response = await fetch('http://localhost:3000/api/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            });
 
-            const data = await response.json();
-
-            if (response.ok) {
-                // Success alert
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Message sent successfully!',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                });
-                
-                // Reset form
-                setFormData({
-                    name: '',
-                    email: '',
-                    phone: '',
-                    message: ''
-                });
-            } else {
-                // Error alert
-                Swal.fire({
-                    title: 'Error!',
-                    text: data.message || 'Something went wrong!',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                });
-            }
-        } catch (error) {
-            // Network error alert
-            Swal.fire({
-                title: 'Error!',
-                text: 'Unable to connect to the server. Please try again.',
-                icon: 'error',
-                confirmButtonText: 'OK'
-            });
-        }
+        await handleSubmit(event, formData, setFormData, setErrors); // Validate and submit form data
     };
 
     return (
@@ -75,46 +30,54 @@ const ContactUs = () => {
             <h1 className="text-2xl font-semibold">Contact Us</h1>
             <div className="py-10">
                 <h2 className="text-center text-xl mb-5 underline">Get in touch</h2>
-                <form 
-                    onSubmit={handleSubmit} 
+                <form
+                    onSubmit={onSubmit}
                     className="w-[50%] mx-auto flex flex-col py-10 gap-5 px-10 bg-zinc-200 rounded-md shadow-lg"
                 >
-                    <input 
+                    <input
                         className="px-4 py-2 text-black outline-none rounded-lg font-[300] text-lg border border-zinc-500"
                         type="text"
                         name="name"
                         value={formData.name}
-                        onChange={handleChange}
+                        onChange={onFieldChange}
                         placeholder="Enter Name"
                         required
                     />
-                    <input 
+                    {errors.name && <p className="text-red-600">{errors.name}</p>}
+
+                    <input
                         className="px-4 py-2 text-black outline-none rounded-lg font-[300] text-lg border border-zinc-500"
                         type="email"
                         name="email"
                         value={formData.email}
-                        onChange={handleChange}
+                        onChange={onFieldChange}
                         placeholder="Enter email"
                         required
                     />
-                    <input 
+                    {errors.email && <p className="text-red-600">{errors.email}</p>}
+
+                    <input
                         className="px-4 py-2 text-black outline-none rounded-lg font-[300] text-lg border border-zinc-500"
                         type="tel"
                         name="phone"
                         value={formData.phone}
-                        onChange={handleChange}
+                        onChange={onFieldChange}
                         placeholder="Enter contact number"
                         required
                     />
-                    <textarea 
+                    {errors.phone && <p className="text-red-600">{errors.phone}</p>}
+
+                    <textarea
                         className="px-4 p-2 text-black outline-none rounded-lg font-[300] text-lg border border-zinc-500"
                         name="message"
                         value={formData.message}
-                        onChange={handleChange}
+                        onChange={onFieldChange}
                         placeholder="Feedback"
                         required
                     />
-                    <button 
+                    {errors.message && <p className="text-red-600">{errors.message}</p>}
+
+                    <button
                         type="submit"
                         className="py-2 px-4 bg-red-600 rounded-md resize-none text-white w-fit mx-auto hover:bg-red-700 transition-colors"
                     >
