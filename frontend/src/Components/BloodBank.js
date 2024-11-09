@@ -1,33 +1,28 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { validateBloodBankForm, handleChange as validateHandleChange, handleSubmit as validateHandleSubmit } from '../mocks/validateBloodBank';
 
 function BloodInventoryForm() {
-
     const navigate = useNavigate();
-
     const [formData, setFormData] = useState({
         blood_group: '',
         total_units: '',
         available_units: '',
         last_update: '',
     });
+    const [errors, setErrors] = useState({});
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
+        validateHandleChange(e, setFormData, setErrors);
     };
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('Form submitted:', formData);
-        // Add form submission logic here
+        validateHandleSubmit(e, formData, setFormData, setErrors);
     };
+
     const handleBack = () => {
         navigate(-1);
-    }
+    };
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100 relative">
@@ -55,6 +50,7 @@ function BloodInventoryForm() {
                         onChange={handleChange}
                         className="mt-1 block w-full px-3 py-2 border border-red-500 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                     />
+                    {errors.blood_group && <p className="text-red-600 text-sm">{errors.blood_group}</p>}
                 </label>
 
                 <label className="block mb-4">
@@ -68,6 +64,7 @@ function BloodInventoryForm() {
                         onChange={handleChange}
                         className="mt-1 block w-full px-3 py-2 border border-red-500 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                     />
+                    {errors.total_units && <p className="text-red-600 text-sm">{errors.total_units}</p>}
                 </label>
 
                 <label className="block mb-4">
@@ -81,6 +78,7 @@ function BloodInventoryForm() {
                         onChange={handleChange}
                         className="mt-1 block w-full px-3 py-2 border border-red-500 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                     />
+                    {errors.available_units && <p className="text-red-600 text-sm">{errors.available_units}</p>}
                 </label>
 
                 <label className="block mb-6">
@@ -93,6 +91,7 @@ function BloodInventoryForm() {
                         onChange={handleChange}
                         className="mt-1 block w-full px-3 py-2 border border-red-500 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                     />
+                    {errors.last_update && <p className="text-red-600 text-sm">{errors.last_update}</p>}
                 </label>
 
                 <button

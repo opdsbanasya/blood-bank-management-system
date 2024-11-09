@@ -76,7 +76,19 @@ db.query(`
     else console.log('blood_request table created successfully');
 });
 
-
+db.query(`
+    CREATE TABLE IF NOT EXISTS blood_bank (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        blood_group CHAR(3) NOT NULL,
+        total_units INT NOT NULL,
+        available_units INT NOT NULL,
+        last_update DATE NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+  `, (err) => {
+    if (err) console.error('Error creating table:', err);
+    else console.log('blood_bank table created successfully');
+});
 
 // API endpoint to handle form submission
 app.post('/api/contact', (req, res) => {
@@ -125,6 +137,32 @@ app.post('/api/request', (req, res) => {
         } else {
             res.status(200).send('Blood request submitted successfully');
         }
+    });
+});
+
+app.post('/api/blood-inventory', (req, res) => {
+    const { blood_group, total_units, available_units, last_update } = req.body;
+
+    if (!blood_group || !total_units || !available_units || !last_update) {
+        return res.status(400).json({ error: "All fields are required" });
+    }
+
+    const query = `
+        INSERT INTO blood_bank (blood_group, total_units, available_units, last_update)
+        VALUES (?, ?, ?, ?)
+        ON DUPLICATE KEY UPDATE
+        total_units = VALUES(total_units),
+        available_units = VALUES(available_units),
+        last_update = VALUES(last_update)
+    `;
+    const values = [blood_group, total_units, available_units, last_update];
+
+    db.query(query, values, (err) => {
+        if (err) {
+            console.error("Error inserting data:", err);
+            return res.status(500).json({ error: "Database error" });
+        }
+        res.status(200).json({ message: "Data saved successfully" });
     });
 });
 
