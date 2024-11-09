@@ -43,7 +43,6 @@ function BloodDonationForm() {
             >
                 <h2 className="text-2xl font-bold text-center mb-6 text-red-700">Blood Donation Form</h2>
 
-                {/* Donor Name */}
                 <label className="block mb-4">
                     <span className="text-red-700">Donor Name</span>
                     <input
@@ -60,7 +59,6 @@ function BloodDonationForm() {
                     {errors.donor_name && <p className="text-red-500 text-sm mt-1">{errors.donor_name}</p>}
                 </label>
 
-                {/* Donor Email */}
                 <label className="block mb-4">
                     <span className="text-red-700">Donor Email</span>
                     <input
@@ -77,7 +75,6 @@ function BloodDonationForm() {
                     {errors.donor_email && <p className="text-red-500 text-sm mt-1">{errors.donor_email}</p>}
                 </label>
 
-                {/* Donor Phone */}
                 <label className="block mb-4">
                     <span className="text-red-700">Donor Phone</span>
                     <input
@@ -94,7 +91,6 @@ function BloodDonationForm() {
                     {errors.donor_phone && <p className="text-red-500 text-sm mt-1">{errors.donor_phone}</p>}
                 </label>
 
-                {/* Blood Group */}
                 <label className="block mb-4">
                     <span className="text-red-700">Blood Group</span>
                     <input
@@ -111,7 +107,6 @@ function BloodDonationForm() {
                     {errors.blood_group && <p className="text-red-500 text-sm mt-1">{errors.blood_group}</p>}
                 </label>
 
-                {/* Donation Date */}
                 <label className="block mb-4">
                     <span className="text-red-700">Donation Date</span>
                     <input
@@ -127,7 +122,6 @@ function BloodDonationForm() {
                     {errors.donation_date && <p className="text-red-500 text-sm mt-1">{errors.donation_date}</p>}
                 </label>
 
-                {/* Donation Location */}
                 <label className="block mb-6">
                     <span className="text-red-700">Donation Location</span>
                     <input
@@ -144,7 +138,6 @@ function BloodDonationForm() {
                     {errors.donation_location && <p className="text-red-500 text-sm mt-1">{errors.donation_location}</p>}
                 </label>
 
-                {/* Submit Button */}
                 <button
                     type="submit"
                     className="w-full bg-red-600 text-white py-2 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2"
@@ -152,7 +145,6 @@ function BloodDonationForm() {
                     Submit
                 </button>
 
-                {/* Submission Error */}
                 {errors.submit && <p className="text-red-500 text-sm mt-2 text-center">{errors.submit}</p>}
             </form>
         </div>

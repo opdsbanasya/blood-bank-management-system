@@ -36,7 +36,6 @@ function BloodRequestForm() {
             >
                 <h2 className="text-2xl font-bold text-center mb-6 text-red-700">Blood Request Form</h2>
 
-                {/** Patient Name Field */}
                 <label className="block mb-4">
                     <span className="text-red-700">Patient Name</span>
                     <input
@@ -51,7 +50,6 @@ function BloodRequestForm() {
                     {errors.patient_name && <p className="text-red-600 text-sm">{errors.patient_name}</p>}
                 </label>
 
-                {/** Patient Email Field */}
                 <label className="block mb-4">
                     <span className="text-red-700">Patient Email</span>
                     <input
@@ -66,7 +64,6 @@ function BloodRequestForm() {
                     {errors.patient_email && <p className="text-red-600 text-sm">{errors.patient_email}</p>}
                 </label>
 
-                {/** Patient Phone Field */}
                 <label className="block mb-4">
                     <span className="text-red-700">Patient Phone</span>
                     <input
@@ -81,7 +78,6 @@ function BloodRequestForm() {
                     {errors.patient_phone && <p className="text-red-600 text-sm">{errors.patient_phone}</p>}
                 </label>
 
-                {/** Blood Group Field */}
                 <label className="block mb-4">
                     <span className="text-red-700">Blood Group</span>
                     <input
@@ -96,7 +92,6 @@ function BloodRequestForm() {
                     {errors.blood_group && <p className="text-red-600 text-sm">{errors.blood_group}</p>}
                 </label>
 
-                {/** Requested Units Field */}
                 <label className="block mb-4">
                     <span className="text-red-700">Requested Units</span>
                     <input
@@ -111,7 +106,6 @@ function BloodRequestForm() {
                     {errors.requested_units && <p className="text-red-600 text-sm">{errors.requested_units}</p>}
                 </label>
 
-                {/** Request Reason Field */}
                 <label className="block mb-4">
                     <span className="text-red-700">Request Reason</span>
                     <textarea
@@ -124,7 +118,6 @@ function BloodRequestForm() {
                     {errors.request_reason && <p className="text-red-600 text-sm">{errors.request_reason}</p>}
                 </label>
 
-                {/** Submit Button */}
                 <button
                     type="submit"
                     className="w-full bg-red-600 text-white py-2 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2"

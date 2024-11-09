@@ -17,7 +17,7 @@ const db = mysql.createConnection({
 });
 
 
-// Establishing connection to MySQL
+// connecting to MySQL
 db.connect((err) => {
     if (err) {
         console.error('Error connecting to MySQL:', err);
@@ -26,7 +26,7 @@ db.connect((err) => {
     console.log('Connected to MySQL database');
 });
 
-// Create contacts table if not exists
+// Tables if not exists
 db.query(`
   CREATE TABLE IF NOT EXISTS contacts (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -90,16 +90,13 @@ db.query(`
     else console.log('blood_bank table created successfully');
 });
 
-// API endpoint to handle form submission
 app.post('/api/contact', (req, res) => {
     const { name, email, phone, message } = req.body;
 
-    // Input validation
     if (!name || !email || !phone || !message) {
         return res.status(400).json({ error: 'All fields are required' });
     }
 
-    // Inserting contact data into MySQL
     const query = 'INSERT INTO contacts (name, email, phone, message) VALUES (?, ?, ?, ?)';
     db.query(query, [name, email, phone, message], (err, result) => {
         if (err) {
@@ -110,7 +107,6 @@ app.post('/api/contact', (req, res) => {
     });
 });
 
-// API endpoint to handle blood donation form submission
 app.post('/api/donate', (req, res) => {
     const { donor_name, donor_email, donor_phone, blood_group, donation_date, donation_location } = req.body;
 
@@ -166,8 +162,7 @@ app.post('/api/blood-inventory', (req, res) => {
     });
 });
 
-// Start server on port 5000
-const PORT = 5000;  // Changed to 5000 to avoid conflict with MySQL
+const PORT = process.env.PORT; 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });

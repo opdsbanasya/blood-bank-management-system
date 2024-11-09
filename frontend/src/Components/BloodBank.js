@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { validateBloodBankForm, handleChange as validateHandleChange, handleSubmit as validateHandleSubmit } from '../mocks/validateBloodBank';
+import { handleChange as validateHandleChange, handleSubmit as validateHandleSubmit } from '../mocks/validateBloodBank';
 
 function BloodInventoryForm() {
     const navigate = useNavigate();

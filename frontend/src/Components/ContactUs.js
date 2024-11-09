@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { handleChange, handleSubmit } from '../mocks/validate'; // Import validation functions
+import { handleChange, handleSubmit } from '../mocks/validate'; 
 
 const ContactUs = () => {
-    // State to store form data
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -10,15 +9,12 @@ const ContactUs = () => {
         message: ''
     });
 
-    // State to store error messages
     const [errors, setErrors] = useState({});
 
-    // Handle input changes
     const onFieldChange = async (e) => {
         await handleChange(e, setFormData, setErrors); // Validate as user types
     };
 
-    // Handle form submission
     const onSubmit = async (event) => {
         event.preventDefault();
 
