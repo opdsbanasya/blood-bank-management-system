@@ -2,34 +2,6 @@
 
 This project is a **Blood Bank Management System** designed to manage and keep track of blood inventory details, including blood group, total units, available units, and the last update date. The frontend is built with **React.js** and styled using **Tailwind CSS**.
 
-## Project Overview
-
-The Blood Bank Management System allows users to add blood inventory details through a form, which includes:
-
-- Blood Group
-- Total Units of Blood
-- Available Units of Blood
-- Last Update Date
-
-The system includes form validation and a server endpoint to store submitted data in a database.
-
-## Features
-
-- **Blood Inventory Form**: A form where users can enter blood group details, total and available units, and the last update date.
-- **Validation**: Ensures the data entered is correct, such as:
-  - Valid blood group format (e.g., "A+", "O-").
-  - Positive values for total and available units.
-  - Available units should not exceed total units.
-- **Data Submission**: Submits validated data to a server API for storage.
-
-## File Structure
-
-### Main Files
-
-- `BloodInventoryForm.js`: React component for the blood inventory form. It displays input fields and handles form validation.
-- `validateBloodBank.js`: Utility file with functions to validate form data, handle input changes, and submit the form data to the server.
-- `server.js`: Server setup file that handles form data submission to the `/api/blood-inventory` endpoint.
-
 ## Setup
 
 ### Prerequisites
