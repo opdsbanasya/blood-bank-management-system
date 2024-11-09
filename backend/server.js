@@ -6,8 +6,15 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
+require('dotenv').config();
 
 // MySQL database connection setup
+const db = mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
+});
 
 
 // Establishing connection to MySQL
@@ -37,6 +44,24 @@ db.query(`
     }
 });
 
+db.query(`
+    CREATE TABLE IF NOT EXISTS blood_donation (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      donor_name VARCHAR(50) NOT NULL,
+      donor_email VARCHAR(50) NOT NULL,
+      donor_phone VARCHAR(20) NOT NULL,
+      blood_group CHAR(3) NOT NULL,
+      donation_date DATE NOT NULL,
+      donation_location VARCHAR(100) NOT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+  `, (err) => {
+    if (err) console.error('Error creating table:', err);
+    else console.log('blood_donation table created successfully');
+});
+
+
+
 // API endpoint to handle form submission
 app.post('/api/contact', (req, res) => {
     const { name, email, phone, message } = req.body;
@@ -54,6 +79,21 @@ app.post('/api/contact', (req, res) => {
             return res.status(500).json({ error: 'Failed to save contact information' });
         }
         res.status(201).json({ message: 'Contact information saved successfully', id: result.insertId });
+    });
+});
+
+// API endpoint to handle blood donation form submission
+app.post('/api/donate', (req, res) => {
+    const { donor_name, donor_email, donor_phone, blood_group, donation_date, donation_location } = req.body;
+
+    const query = 'INSERT INTO blood_donation (donor_name, donor_email, donor_phone, blood_group, donation_date, donation_location) VALUES (?, ?, ?, ?, ?, ?)';
+    db.query(query, [donor_name, donor_email, donor_phone, blood_group, donation_date, donation_location], (err, result) => {
+        if (err) {
+            console.error('Error saving donation:', err);
+            res.status(500).json({ error: 'Failed to save donation information' });
+            return;
+        }
+        res.status(201).json({ message: 'Donation information saved successfully' });
     });
 });
 
