@@ -10,6 +10,9 @@ import Patient from "./Components/Patient";
 import ServicePage from "./Components/ServicePage";
 import LoginPage from "./Components/LoginPage"
 import Register from "./Components/Register";
+import BloodDonation from "./Components/BloodDonation";
+import BloodRequest from "./Components/BloodRequest";
+import BloodBank from "./Components/BloodBank";
 
 const App = () => {
 
@@ -54,7 +57,19 @@ const appRouter = createBrowserRouter([
             {
                 path: "/services",
                 element: <ServicePage />
-            }
+            },
+            {
+                path: "/blooddonation",
+                element: <BloodDonation />
+            },
+            {
+                path: "/bloodrequest",
+                element: <BloodRequest />
+            },
+            {
+                path: "/bloodbank",
+                element: <BloodBank />
+            },
 
         ]
     },

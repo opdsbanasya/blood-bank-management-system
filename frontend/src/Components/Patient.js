@@ -1,10 +1,10 @@
-
+import React from 'react';
 
 const Patient = () => {
     return (
-        <section className="min-h-screen">
+        <div>
             Patient
-        </section>
+        </div>
     );
 }
 
